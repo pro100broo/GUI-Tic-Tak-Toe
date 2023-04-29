@@ -72,6 +72,7 @@ class TurnsManager:
     def update_rounds_counter() -> None:
         TurnsManager.__rounds_counter = {"x": 0, "o": 0}
 
+    @_is_draw
     def check_winner(self, symbol_position: int) -> str:
         """
         Проверка на победителя, после каждого хода
@@ -90,7 +91,7 @@ class TurnsManager:
         TurnsManager.__board[symbol_position // 3][symbol_position % 3] = self.get_current_symbol()
         return self.get_current_symbol()
 
-    @_is_draw
+
     def __check_rows_columns(self, symbol: str) -> int | None:
         """
          Проверка выигрышной комбинации по строкам и столбцам
